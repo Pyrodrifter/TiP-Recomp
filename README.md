@@ -10,29 +10,29 @@
 
 ReTiP recompiles and hooks Viva Pinata Trouble in Paradise in order to better mod support, and QoL features.
 
-The main priority of this project is not to be playable on low end hardware or to be fully optimized. I started this project as a means to mod Trouble in Paradise, Adding cheats, Reverse Engineering the asset formats, Texture Packs, and adding other cool stuff. Im not a purest when it comes to making this recomp be fully native. Eventually I or someone else will add a native renderer that will lower the system requirements, But thats not my priority. It runs on my system (rtx 3050) at 200fps, and over 100fps on a gtx 1660. Ive added some optimizations and have decompiled some broken shaders so that the recomp doesn't have the same performance/quality issues as xenia. Uncapped xenia can only run the game at 70fps, while this recomp runs at 240fps on my machine.
+This project features a native renderer post 1.13.0, it also fixes every issue xenia has with rendering. it runs better then emulation by a large margin and is fully recommended to play this recomp over xenia.
 
 Showcase Video: https://youtu.be/Kih42KlocII?si=WeSh2FvBYrwQuNB-
 
-Currently only supports windows, Linux is planned though. This project is still very early on and personally I dont have a Steam Deck to work on compatibility.
+Currently only supports windows, Linux, and soon to be MacOS (MacBook Neo)
 
 ## Hardware Requirements
 
-Requires the retail Viva Pinata Trouble in Paradise disc. Steam Deck is not supported yet. Windows x86-64 only.
+Requires the retail Viva Pinata Trouble in Paradise disc.
 
 ### Minimum
 
-- OS: Windows 11 version 1909 or later
+- OS: Windows, Linux, Mac
 - Processor: Intel Core i5-4460 3.2 GHz 4 Core or AMD Ryzen 3 1200, or equivalent
-- Memory: 16 GB RAM
-- GPU: Nvidia GTX 1660 Ti or AMD Radeon RX 5600 XT or better
+- Memory: 6 GB RAM
+- GPU: Nvidia GTX 1050 Ti or better
 - Storage: 15 GB available space
 - IO: A controller or a gaming mouse with forward and back buttons
 
 ### Recommended
-- OS: Windows 11 version 1909 or later
+- OS: Windows 11, Linux, Mac
 - Processor: Intel Core i7-9700K or AMD Ryzen 7 3700X, or equivalent
-- Memory: 32 GB RAM
+- Memory: 16 GB RAM
 - GPU: Nvidia RTX 3050 or AMD RX 6600 or better
 - Storage: 15 GB available space
 - IO: A controller or a gaming mouse with forward and back buttons
@@ -53,12 +53,9 @@ Everything below is new to ReTiP. Most of it is configurable via F4 Menu. Id do 
 
 - Custom Aspect ratios via "AspectRatio" value in F4 menu.
 - Four quality presets, Low through Ultra via launch menu.
-- Anisotropic filtering and Mipmap bias control.
 - Graphics toggles to help low end hardware by cutting off Shadows, Ambient Occlusion, Post Processing etc.
 - Unlocked FPS with optional caps and VSync.
 - Texturepacks.
-- Shaderpacks.
-- Ice shader that would be broken in xenia is fixed in the recomp.
 
 ### Quality of Life
 
@@ -66,13 +63,14 @@ Everything below is new to ReTiP. Most of it is configurable via F4 Menu. Id do 
 - Field of view adjustment, By adjusting the aspect ratio the FOV will change as well.
 - Skip the in-game cutscenes with a mod I uploaded to thunderstore.
 - Partial Unlimited Garden space, Its not complete but it does work with store items. (included and enabled by default)
-- Ill need to update this list more later... (I ran out of time)
+- Ill need to update this list more later... 
+- Shovel Qol mods
+- other general improvements like to the camera
 
 ### Mods
 
 - Built-in mod manager
 - TexturePacks
-- ShaderPacks
 - AudioPacks
 - DataPacks
 - Lua Script mods
@@ -80,9 +78,9 @@ Everything below is new to ReTiP. Most of it is configurable via F4 Menu. Id do 
 ### Platforms and Languages
 
 - Windows on DX12
-- Linux, Soon.
-- macOS, Soon.
-- Language can be changed if you using The Goopie Launcher, Ill need to add it to the launch menu.
+- Linux, on Vulkan
+- macOS, on MkVulkan
+- Language can be changed using a cvar (I'll update this readme later with instructions)
 
 ## Credits
 - [Franksy32](https://https://github.com/Franksy32) For providing the unlimited garden space patches
