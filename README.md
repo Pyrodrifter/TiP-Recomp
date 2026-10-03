@@ -4,7 +4,10 @@
 > ReTiP is an unofficial project
 
 > [!NOTE]
-> This Repo has a strict no AI rule, No Vibe Coding, No AI generated Assets, No AI assisted Disassembly/Analysis.
+> This Repo has a strict no AI rule, No Vibe Coding, No AI generated Assets, No AI assisted Disassembly/Analysis. This isnt out of virtue signaling, I have fun working on this project. I prefer anyone who works on it to know what's going on beyond just testing to see if claude made it work. 
+
+> [!NOTE]
+> I do not consent for my work to be used by Ai as reference and or Ai to work on this project. Due to vibecoded forks, I'll not be uploading any of the code for the rexglue fork or the native renderer as they are the bulk backend of what makes the recomp special. If you wish to help work on the backend join my discord and after a while I'll give you access. Its still possible to build the project on normal rexglue and play on the xenia renderer to develop any PRs or Mods. 
 
 # ReTiP
 
