@@ -20,7 +20,7 @@ jobs:
         include:
           # ── Plain builds: relwithdebinfo × 2 archs ────────────────────────
           - { platform: windows, arch: x64,   runner: windows-latest,  config: relwithdebinfo,  variant: plain, variant_suffix: "",        sdk_arch: win-amd64, preset_arch: win-amd64, build_type: RelWithDebInfo, extra_cmake: "" }
-          - { platform: windows, arch: arm64, runner: windows-11-arm,  config: relwithdebinfo,  variant: plain, variant_suffix: "",        sdk_arch: win-arm64, preset_arch: win-arm64, build_type: RelWithDebInfo, extra_cmake: "" }
+          # arm64 removed: rexglue-sdk v0.9.0 does not build on Windows ARM.
 
 
     env:
@@ -66,6 +66,12 @@ jobs:
         shell: pwsh
 
       # ── Configure retip ────────────────────────────────────────────────────
+      - name: Provide generated/rexglue.cmake
+        run: |
+          mkdir -p generated
+          cp .github/ci/rexglue.cmake generated/rexglue.cmake
+        shell: bash
+
       - name: Configure CMake
         run: cmake --preset ${{ env.RETIP_PRESET }} -DCMAKE_PREFIX_PATH="${{ github.workspace }}/${{ env.SDK_INSTALL_DIR }}" ${{ matrix.extra_cmake }}
         shell: bash
@@ -73,6 +79,11 @@ jobs:
       # ── Run codegen (manifest-driven; does not touch checked-in sources) ──
       - name: Run codegen
         run: cmake --build --preset ${{ env.RETIP_PRESET }} --target retip_codegen
+
+      # rexglue.cmake only adds the generated sources if they exist at configure time.
+      - name: Reconfigure with generated sources
+        run: cmake --preset ${{ env.RETIP_PRESET }} -DCMAKE_PREFIX_PATH="${{ github.workspace }}/${{ env.SDK_INSTALL_DIR }}" ${{ matrix.extra_cmake }}
+        shell: bash
 
       # ── Build ───────────────────────────────────────────────────────────────
       - name: Build
