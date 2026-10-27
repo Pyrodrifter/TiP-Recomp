@@ -26,7 +26,7 @@ jobs:
     env:
       SDK_CONFIGURE_PRESET: ${{ matrix.sdk_arch }}
       SDK_BUILD_PRESET: ${{ matrix.sdk_arch }}-${{ matrix.config }}
-      SDK_INSTALL_DIR: rexglue-sdk/out/install/${{ matrix.sdk_arch }}
+      SDK_INSTALL_DIR: ../rexglue-sdk/out/install/${{ matrix.sdk_arch }}
       RETIP_PRESET: ${{ matrix.preset_arch }}-${{ matrix.config }}
       RETIP_BUILD_DIR: out/build/${{ matrix.preset_arch }}-${{ matrix.config }}
       RETIP_BINARY: out/build/${{ matrix.preset_arch }}-${{ matrix.config }}/retip.exe
@@ -43,15 +43,16 @@ jobs:
       # ── Build rexglue SDK from the SolarRecomps fork (dev branch) ─────────
       # SolarRecomps/rexglue-ostentation is no longer public; v0.9.0 is the closest
       # public release to the 0.8.1-dev SDK that ReTiP 1.14.0 shipped with.
+      # Cloned beside the checkout: codegen's upgrade scan walks the whole project tree.
       - name: Clone rexglue SDK fork
-        run: git clone --recursive --depth 1 --branch v0.9.0 https://github.com/rexglue/rexglue-sdk.git rexglue-sdk
+        run: git clone --recursive --depth 1 --branch v0.9.0 https://github.com/rexglue/rexglue-sdk.git ../rexglue-sdk
 
       - name: Configure rexglue SDK
-        working-directory: rexglue-sdk
+        working-directory: ../rexglue-sdk
         run: cmake --preset ${{ env.SDK_CONFIGURE_PRESET }} --fresh ${{ matrix.extra_cmake }}
 
       - name: Build & install rexglue SDK
-        working-directory: rexglue-sdk
+        working-directory: ../rexglue-sdk
         run: cmake --build --preset ${{ env.SDK_BUILD_PRESET }} --target install
 
       - name: Add rexglue to PATH
