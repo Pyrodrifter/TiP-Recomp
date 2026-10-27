@@ -41,8 +41,10 @@ jobs:
         uses: seanmiddleditch/gha-setup-ninja@v6
 
       # ── Build rexglue SDK from the SolarRecomps fork (dev branch) ─────────
+      # SolarRecomps/rexglue-ostentation is no longer public; v0.9.0 is the closest
+      # public release to the 0.8.1-dev SDK that ReTiP 1.14.0 shipped with.
       - name: Clone rexglue SDK fork
-        run: git clone --recursive --branch dev https://github.com/SolarRecomps/rexglue-ostentation.git rexglue-sdk
+        run: git clone --recursive --depth 1 --branch v0.9.0 https://github.com/rexglue/rexglue-sdk.git rexglue-sdk
 
       - name: Configure rexglue SDK
         working-directory: rexglue-sdk
